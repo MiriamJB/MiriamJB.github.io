@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="dist/output.css" rel="stylesheet" />
-    <script src="dist/output.js" defer></script>
+    <link href="./dist/output.css" rel="stylesheet" />
+    <script src="./dist/output.js" defer></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -19,90 +19,60 @@
   <body class="bg-gray-800">
     <!--nav-->
     <nav
-      class="p-5 font-mono text-indigo-400 shadow md:flex md:items-center md:justify-between"
+      class="py-6 px-4 pr-8 font-mono text-sm text-indigo-400 shadow md:flex md:items-center md:justify-between md:px-8"
+      x-data="$navbar"
     >
       <div class="flex items-center justify-between">
-        <div>./miriamburton</div>
+        <div class="text-xl md:text-2xl">./miriamburton</div>
 
         <span
-          class="mx-2 block cursor-pointer text-slate-300 hover:text-slate-200 active:text-slate-400 md:hidden"
+          class="block cursor-pointer text-slate-300 hover:text-slate-200 active:text-slate-400 md:hidden"
         >
           <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
         </span>
       </div>
 
       <ul
-        class="absolute left-0 top-[-400px] z-10 w-full bg-gray-800 py-4 opacity-0 transition-all duration-500 ease-in md:static md:z-auto md:flex md:w-auto md:items-center md:py-0 md:opacity-100"
+        class="absolute left-0 top-[-400px] z-10 w-full bg-gray-800 opacity-0 transition-all duration-500 ease-in md:static md:z-auto md:flex md:w-auto md:items-center md:py-0 md:opacity-100"
       >
-        <li class="mx-4">
-          <a href="#"
-            >01.
-            <span
-              class="text-slate-300 hover:text-slate-200 active:text-slate-400"
-              >home</span
-            ></a
+        <template x-for="item in listItems">
+          <li
+            class="group p-4 outline-none ring-slate-800 ring-offset-slate-800 hover:bg-slate-900 focus:border-b-2 focus:border-indigo-400 md:hover:bg-slate-800"
           >
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#"
-            >02.
-            <span
-              class="text-slate-300 hover:text-slate-200 active:text-slate-400"
-              >about</span
-            ></a
-          >
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#"
-            >03.
-            <span
-              class="text-slate-300 hover:text-slate-200 active:text-slate-400"
-              >skills</span
-            ></a
-          >
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#"
-            >04.
-            <span
-              class="text-slate-300 hover:text-slate-200 active:text-slate-400"
-              >experience</span
-            ></a
-          >
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#"
-            >05.
-            <span
-              class="text-slate-300 hover:text-slate-200 active:text-slate-400"
-              >projects</span
-            ></a
-          >
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#"
-            >06.
-            <span
-              class="text-slate-300 hover:text-slate-200 active:text-slate-400"
-              >contact</span
-            ></a
-          >
-        </li>
+            <a x-bind:href="item.ref">
+              <span
+                class="group-hover:text-indigo-300 group-active:text-indigo-500"
+                x-text="item.number"
+                >number</span
+              >
+              <span
+                class="text-slate-300 group-hover:text-slate-200 group-active:text-slate-400"
+                x-text="item.section"
+                >section</span
+              >
+            </a>
+          </li>
+        </template>
       </ul>
     </nav>
 
     <!--home-->
-    <section class="flex flex-col p-4 md:flex-row-reverse md:justify-between">
-      <div class="flex md:mx-4 md:w-1/3 md:justify-end md:px-4">
-        <img src="images/Profile Pic 2.jpg" alt="An image of me." />
+    <section
+      id="home"
+      class="m-8 flex flex-col md:flex-row-reverse md:justify-between"
+    >
+      <div class="flex md:mt-8">
+        <img
+          class="h-fit"
+          src="images/Profile Pic 2.jpg"
+          alt="An image of me."
+        />
       </div>
-      <div
-        class="flex-col px-10 text-center font-serif text-slate-300 md:text-left"
-      >
-        <h2 class="my-4 font-mono text-indigo-400">Hey, my name is</h2>
-        <h1 class="my-2 text-4xl">Miriam Burton</h1>
+      <div class="flex-col text-center font-serif text-slate-300 md:text-left">
+        <h2 class="mt-10 font-mono text-indigo-400">Hey, my name is</h2>
+        <h1 class="mt-6 mb-10 text-6xl text-white">Miriam Burton</h1>
         <div class="md:justify-start">
-          <p class="my-4 md:w-2/3">
+          <p class="my-4 font-sans text-lg md:w-2/3">
             I'm a software enginer with a knack for visual design. I live my
             life by two things: consitency and efficency. I'm good at locating
             and solving problems, keeping things orginised, and keeping a
@@ -110,34 +80,12 @@
           </p>
         </div>
 
-        <div class="text-center">
-          <button
-            class="flex w-full justify-center rounded border border-indigo-400 px-8 py-4 font-mono text-indigo-400 hover:border-indigo-300 hover:text-indigo-300 active:border-indigo-500 active:text-indigo-500 md:w-fit md:justify-start"
-          >
-            <span class="mx-4">Download my resume</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-6 w-6"
+        <div class="my-10 text-center">
+          <a href="images/Resume 2023.3.pdf" download>
+            <button
+              class="flex w-full justify-center rounded border border-indigo-400 px-8 py-4 font-mono text-indigo-400 hover:border-indigo-300 hover:text-indigo-300 active:border-indigo-500 active:text-indigo-500 md:w-fit md:justify-start"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="flex flex-row justify-center md:justify-start">
-          <button
-            class="group flex flex-row items-center py-4 text-center text-lg text-slate-400 hover:text-slate-300 active:text-slate-500 md:justify-start"
-          >
-            <div
-              class="flex-center flex h-14 w-14 items-center rounded-full border border-slate-400 p-4 group-hover:border-slate-300 group-active:border-slate-500"
-            >
+              <span class="mx-4">Download my resume</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -149,27 +97,54 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+            </button>
+          </a>
+        </div>
+        <div class="flex flex-row justify-center md:justify-start">
+          <button
+            class="group my-4 flex flex-row items-center text-center text-lg text-slate-400 hover:text-slate-300 active:text-slate-500 md:justify-start"
+          >
+            <div
+              class="flex-center flex h-20 w-20 items-center justify-center rounded-full border border-slate-400 group-hover:border-slate-300 group-active:border-slate-500"
+            >
+              <svg
+                width="21"
+                height="22"
+                viewBox="0 0 21 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0 2.53731C0 0.635975 2.03867 -0.569358 3.70533 0.346642L19.092 8.81064C20.8187 9.75997 20.8187 12.2413 19.092 13.1906L3.70667 21.6546C2.04 22.5706 0.00133324 21.3653 0.00133324 19.464V2.53731H0Z"
+                  fill="#94A3B8"
                 />
               </svg>
             </div>
 
-            <span class="m-4">Watch video</span>
+            <span class="m-4 font-mono text-sm">Watch video</span>
           </button>
         </div>
       </div>
     </section>
 
     <!--about-->
-    <section class="m-4 px-10 font-serif text-slate-300 lg:text-left">
+    <section
+      id="about"
+      class="px-4 font-sans text-slate-300 md:px-8 lg:text-left"
+    >
       <h1 class="flex items-center">
-        <div class="w-32 py-10 text-lg md:pr-8">
-          <span class="font-mono text-indigo-400">02 </span>About
+        <div class="inline-flex py-10 pr-4 font-mono text-xl text-slate-100">
+          <span class="font-mono text-indigo-400">02&nbsp;</span>About
         </div>
         <div class="h-0 w-full border border-dashed border-indigo-400"></div>
       </h1>
-      <div class="flex flex-col md:mx-4 md:flex-row-reverse">
-        <div class="relative mb-8 md:mb-auto md:justify-end">
+      <div class="flex flex-col md:flex-row-reverse">
+        <div class="relative mb-8 mr-4 md:mb-auto md:items-center">
           <img
             src="Images/Unicorn Dark cropped.png"
             alt="An image of a unicorn that I drew."
@@ -179,7 +154,7 @@
           ></svg>
         </div>
         <div class="md:justify-start">
-          <p class="md:w-2/3">
+          <p class="text-lg md:w-2/3">
             Hey humans! I'm currently a student at
             <span class="text-indigo-400">Ensign College</span> persuing a
             bachelor's degree in
@@ -194,10 +169,10 @@
             When I'm not coding, I like to stretch my brain by learing
             <span class="text-indigo-400">Spanish</span> and
             <span class="text-indigo-400">Russian.</span> I'm not fluent in
-            either yet, but I hope to be one day! Another thing that I enjoy is
+            either yet, but I hope to be one day! Another thing I enjoy is
             <span class="text-indigo-400">art.</span> I bought my first tablet
             in 2021, and it's probably one of my best investments. I mainly use
-            it to create static drawings, but I've also been making
+            it for static drawings, but I've also been making
             <span class="text-indigo-400">animations</span> and
             <span class="text-indigo-400">pixel art</span> for some games I've
             been working on for fun.<br /><br />
@@ -218,18 +193,25 @@
         </div>
       </div>
     </section>
+
     <!-- skills-->
     <section
+      id="skills"
       x-data="$skills"
       x-init="load()"
-      class="m-4 px-4 font-serif text-slate-300 lg:px-10"
+      class="px-4 font-mono text-slate-300 lg:px-10"
     >
       <h1 class="flex items-center">
-        <span class="w-32 py-10 text-lg md:pr-8"
-          ><span class="font-mono text-indigo-400">03 </span>Skills</span
+        <span class="inline-flex py-10 pr-4 font-mono text-xl text-slate-100"
+          ><span class="font-mono text-indigo-400">03&nbsp;</span>Skills</span
         >
         <span class="h-0 w-full border border-dashed border-indigo-400"></span>
       </h1>
+      <p class="mb-8 font-sans text-xl">
+        Welcome to the fun zone! Here, my top coding languages and the hours
+        that I have spent in each one since January of 2023 are displayed live
+        from WakaTime.
+      </p>
       <div class="flex flex-col flex-wrap items-center gap-4 pb-20 md:flex-row">
         <template x-for="language in languages">
           <div
@@ -254,112 +236,247 @@
               <div class="flex flex-row items-center">
                 <span class="text-4xl" x-text="language.hours"></span
                 ><span class="text-4xl">h</span
-                ><span class="text-slate-500">/1,000 h</span>
+                ><span class="text-lg text-slate-500">/1,000 h</span>
               </div>
             </div>
           </div>
         </template>
       </div>
     </section>
-    <section class="m-4 px-10 font-serif text-slate-300 lg:text-left">
+
+    <!-- experience section -->
+    <section
+      id="experience"
+      x-data="$experiences"
+      class="px-4 font-mono text-slate-300 md:px-8 lg:text-left"
+    >
       <h1 class="flex items-center">
-        <div class="w-40 py-10 text-lg md:pr-8">
-          <span class="font-mono text-indigo-400">04 </span>Experience
+        <div class="inline-flex py-10 pr-4 text-xl text-slate-100">
+          <span class="text-indigo-400">04&nbsp;</span>Experience
         </div>
         <div class="h-0 w-full border border-dashed border-indigo-400"></div>
       </h1>
       <div class="flex flex-col">
-        <div class="flex flex-row">
-          <div class="relative flex flex-col items-center pr-6">
-            <div class="h-4 w-4 border border-indigo-400 pb-3"></div>
-            <div class="absolute top-1 -z-10 h-2 w-2 bg-slate-400"></div>
-            <div
-              class="h-full w-0 border border-dashed border-indigo-400"
-            ></div>
+        <template x-for="exp in experiences">
+          <div class="flex flex-row">
+            <div class="flex flex-col items-center pr-6 pt-1">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="4"
+                  y="12.3333"
+                  width="11.7851"
+                  height="11.7851"
+                  transform="rotate(-45 4 12.3333)"
+                  fill="#8892C0"
+                />
+                <rect
+                  x="1.41421"
+                  y="12.5"
+                  width="15.6777"
+                  height="15.6777"
+                  transform="rotate(-45 1.41421 12.5)"
+                  stroke="#818cf8"
+                  stroke-width="2"
+                />
+              </svg>
+              <div
+                class="h-full w-0 border border-dashed border-indigo-400"
+              ></div>
+            </div>
+            <div class="mb-4">
+              <p class="text-lg text-slate-200" x-text="exp.title">Job Title</p>
+              <p class="text-sm text-slate-400" x-text="exp.dates">
+                start time - end time
+              </p>
+              <p class="mt-2" x-text="exp.description">description</p>
+            </div>
           </div>
-          <div>
-            <p class="text-lg">Job Title</p>
-            <p class="text-sm text-slate-400">start time - end time</p>
-            <p>description</p>
-          </div>
+        </template>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section>
+      <div
+        class="my-16 h-0 w-full border border-indigo-400 text-xl md:text-2xl"
+      ></div>
+      <div class="my-16 flex flex-col items-center font-mono text-slate-300">
+        <h3 class="font-serif text-4xl md:text-6xl">
+          Let's work <span class="text-indigo-400">together!</span>
+        </h3>
+        <span class="my-2 underline">miriam.jb201@gmail.com</span>
+        <span>Based in Salt Lake City, UT</span>
+        <div class="m-8 flex flex-row">
+          <!-- github icon -->
+          <a
+            href="https://github.com/MiriamJB"
+            class="mx-3 rounded-full hover:bg-indigo-800 hover:shadow-md hover:shadow-indigo-800 active:bg-indigo-900"
+          >
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24 0C10.7448 0 0 11.0158 0 24.6087C0 35.4796 6.876 44.7045 16.4136 47.9572C17.6136 48.1832 18.0504 47.4241 18.0504 46.7706C18.0504 46.1884 18.0312 44.6382 18.0192 42.5868C11.3424 44.0731 9.9336 39.2875 9.9336 39.2875C8.844 36.4426 7.2696 35.686 7.2696 35.686C5.0904 34.1628 7.4352 34.1923 7.4352 34.1923C9.8424 34.3643 11.1096 36.7276 11.1096 36.7276C13.2504 40.4864 16.728 39.4005 18.0936 38.7716C18.3144 37.1821 18.9336 36.0987 19.62 35.4845C14.292 34.863 8.688 32.7502 8.688 23.3214C8.688 20.6363 9.624 18.4375 11.1576 16.7178C10.9104 16.0963 10.0872 13.5929 11.3928 10.2076C11.3928 10.2076 13.4088 9.54427 17.9928 12.7281C19.9506 12.1816 21.9707 11.9032 24 11.9002C26.04 11.9101 28.092 12.1828 30.0096 12.7281C34.5912 9.54427 36.6024 10.2051 36.6024 10.2051C37.9128 13.5929 37.0872 16.0963 36.8424 16.7178C38.3784 18.4375 39.3096 20.6363 39.3096 23.3214C39.3096 32.7748 33.696 34.8556 28.3512 35.4649C29.2128 36.224 29.9784 37.725 29.9784 40.022C29.9784 43.3091 29.9496 45.9648 29.9496 46.7706C29.9496 47.429 30.3816 48.1955 31.6008 47.9547C36.3799 46.3139 40.5344 43.1772 43.4772 38.9879C46.4199 34.7986 48.002 29.7686 48 24.6087C48 11.0158 37.2528 0 24 0Z"
+                fill="#CBD5E1"
+              />
+            </svg>
+          </a>
+          <!-- linkedin icon -->
+          <a
+            href="https://www.linkedin.com/in/miriam-burton/"
+            class="mx-3 rounded-full hover:bg-indigo-800 hover:shadow-md hover:shadow-indigo-800 active:bg-indigo-900"
+          >
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M24 0C10.7451 0 0 10.7451 0 24C0 37.2548 10.7451 47.9999 24 47.9999C37.2548 47.9999 48 37.2548 48 24C47.9999 10.7451 37.2547 0 24 0ZM17.5967 35.6028H12.3273V18.5788H17.5967V35.6028ZM14.9369 16.3494C13.216 16.3494 11.8208 14.9429 11.8208 13.2081C11.8208 11.4732 13.2161 10.0668 14.9369 10.0668C16.6576 10.0668 18.0528 11.4732 18.0528 13.2081C18.0529 14.943 16.6577 16.3494 14.9369 16.3494ZM37.3439 35.6028H32.1V26.6666C32.1 24.2157 31.169 22.8475 29.231 22.8475C27.1218 22.8475 26.0199 24.2725 26.0199 26.6666V35.6028H20.9659V18.5788H26.0199V20.8716C26.0199 20.8716 27.5402 18.0595 31.15 18.0595C34.7599 18.0595 37.344 20.2637 37.344 24.8235L37.3439 35.6028Z"
+                fill="#CBD5E1"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
-  </body>
 
-  <script>
-    // script for nav menu button
-    function Menu(e) {
-      let list = document.querySelector("ul");
-      e.name === "menu"
-        ? ((e.name = "close"),
-          list.classList.add("top-[80px]"),
-          list.classList.add("opacity-100"))
-        : ((e.name = "menu"),
-          list.classList.remove("top-[80px]"),
-          list.classList.remove("opacity-100"));
-    }
+    <!-- scripts -->
+    <script>
+      // script for nav menu button
+      function Menu(e) {
+        let list = document.querySelector("ul");
+        e.name === "menu"
+          ? ((e.name = "close"),
+            list.classList.add("top-[80px]"),
+            list.classList.add("opacity-100"))
+          : ((e.name = "menu"),
+            list.classList.remove("top-[80px]"),
+            list.classList.remove("opacity-100"));
+      }
 
-    // script for the skills section cards
-    const skills = function () {
-      return {
-        languages: [
-          {
-            name: "HTML",
-            image: "images/html logo.png",
-            description:
-              "HTML is essential for creating web content with a wide range of applications, constantly evolving to meet changing needs and remaining vital.",
-          },
-          {
-            name: "Dart",
-            image: "images/dart logo.png",
-            description:
-              "Dart is a language designed for ease of mobile-app creation. It is object-oriented and class-based with C-style syntax.",
-          },
-          {
-            name: "Java",
-            image: "images/java logo.png",
-            description:
-              "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.",
-          },
-          {
-            name: "JavaScript",
-            image: "images/javascript logo.png",
-            description:
-              "JavaScript has grown to become one of the most popular programming languages in the world, with a large and active developer community.",
-          },
-          // {
-          //     name: 'CSS',
-          //     image: 'images/css logo.png',
-          //     description: 'CSS is critical for creating visually appealing and consistent web designs across devices and platforms.',
-          // },
-        ],
-        async load() {
-          const res = await fetch(
-            "https://nextjs-red-six-46.vercel.app/api/wakatime/miriamjb",
-            { method: "GET" }
-          );
-          const stats = await res.json();
-          const { data } = stats;
-          const languagesWanted = ["HTML", "CSS", "JavaScript", "Java", "Dart"];
-          const langStatsList = data.languages.filter(
-            (l) => languagesWanted.indexOf(l.name) !== -1
-          );
-          for (let i = 0; i < langStatsList.length; i++) {
-            const langStats = langStatsList[i];
-            const targetLang = this.languages.find(
-              (l) => l.name === langStats.name
-            );
-            targetLang.hours = langStats.hours;
-            targetLang.decimal = langStats.decimal;
-          }
-        },
-        progress(language) {
-          const percentage = (language.decimal / 320) * 100;
-          return `${percentage}%`;
-        },
+      //script for navbar entries
+      const navbar = function () {
+        return {
+          listItems: [
+            { number: "01.", section: "home", ref: "#home" },
+            { number: "02.", section: "about", ref: "#about" },
+            { number: "03.", section: "skills", ref: "#skills" },
+            { number: "04.", section: "experience", ref: "#experience" },
+            { number: "05.", section: "contact", ref: "#contact" },
+          ],
+        };
       };
-    };
-    window.$skills = skills;
-  </script>
+      window.$navbar = navbar;
+
+      // script for the skills section cards
+      const skills = function () {
+        return {
+          languages: [
+            {
+              name: "HTML",
+              image: "images/html logo.png",
+              description:
+                "HTML is essential for creating web content with a wide range of applications, constantly evolving to meet changing needs and remaining vital.",
+            },
+            {
+              name: "Dart",
+              image: "images/dart logo.png",
+              description:
+                "Dart is a language designed for ease of mobile-app creation. It is object-oriented and class-based with C-style syntax.",
+            },
+            {
+              name: "Java",
+              image: "images/java logo.png",
+              description:
+                "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.",
+            },
+            {
+              name: "JavaScript",
+              image: "images/javascript logo.png",
+              description:
+                "JavaScript has grown to become one of the most popular programming languages in the world, with a large and active developer community.",
+            },
+            // {
+            //     name: 'CSS',
+            //     image: 'images/css logo.png',
+            //     description: 'CSS is critical for creating visually appealing and consistent web designs across devices and platforms.',
+            // },
+          ],
+          async load() {
+            const res = await fetch(
+              "https://nextjs-red-six-46.vercel.app/api/wakatime/miriamjb",
+              { method: "GET" }
+            );
+            const stats = await res.json();
+            const { data } = stats;
+            const languagesWanted = [
+              "HTML",
+              "CSS",
+              "JavaScript",
+              "Java",
+              "Dart",
+            ];
+            const langStatsList = data.languages.filter(
+              (l) => languagesWanted.indexOf(l.name) !== -1
+            );
+            for (let i = 0; i < langStatsList.length; i++) {
+              const langStats = langStatsList[i];
+              const targetLang = this.languages.find(
+                (l) => l.name === langStats.name
+              );
+              targetLang.hours = langStats.hours;
+              targetLang.decimal = langStats.decimal;
+            }
+          },
+          progress(language) {
+            const percentage = (language.decimal / 320) * 100;
+            return `${percentage}%`;
+          },
+        };
+      };
+      window.$skills = skills;
+
+      //script for experience section
+      const experience = function () {
+        return {
+          experiences: [
+            {
+              title: "Information Technology Teaching Assistant",
+              dates: "08/2023 - Present",
+              description:
+                "Acts as Scrum Master. Leads and manages Ensign's IT team while gaining hands-on experience in the IT field.",
+            },
+            {
+              title: "Developer",
+              dates: "09/2023 - Present",
+              description:
+                "Works with Ensign College students in different teams to create a variety of projects using diverse languages, programs, and engines.",
+            },
+            {
+              title: "Scrum Master",
+              dates: "01/2022 - 04/2022",
+              description:
+                "Conducted sprint planning meetings, reviews, and retrospectives. Created a to-do list program with a team.",
+            },
+          ],
+        };
+      };
+      window.$experiences = experience;
+    </script>
+  </body>
 </html>
