@@ -19,7 +19,7 @@
   <body class="bg-gray-800">
     <!--nav-->
     <nav
-      class="py-6 px-4 pr-8 font-mono text-sm text-indigo-400 shadow md:flex md:items-center md:justify-between md:px-8"
+      class="fixed top-0 z-10 w-full bg-gray-800 py-6 px-4 pr-8 font-mono text-indigo-400 shadow md:flex md:items-center md:justify-between md:px-8 md:py-4"
       x-data="$navbar"
     >
       <div class="flex items-center justify-between">
@@ -33,11 +33,11 @@
       </div>
 
       <ul
-        class="absolute left-0 top-[-400px] z-10 w-full bg-gray-800 opacity-0 transition-all duration-500 ease-in md:static md:z-auto md:flex md:w-auto md:items-center md:py-0 md:opacity-100"
+        class="absolute left-0 top-[-400px] z-10 w-full bg-gray-800 transition-all duration-500 ease-in md:static md:z-auto md:flex md:w-auto md:items-center md:py-0 md:opacity-100"
       >
         <template x-for="item in listItems">
           <li
-            class="group p-4 outline-none ring-slate-800 ring-offset-slate-800 hover:bg-slate-900 focus:border-b-2 focus:border-indigo-400 md:hover:bg-slate-800"
+            class="group p-4 outline-none ring-slate-800 ring-offset-slate-800 hover:bg-gray-900 focus:border-b-2 focus:border-indigo-400 md:hover:bg-gray-800"
           >
             <a x-bind:href="item.ref">
               <span
@@ -59,9 +59,9 @@
     <!--home-->
     <section
       id="home"
-      class="m-8 flex flex-col md:flex-row-reverse md:justify-between"
+      class="m-8 flex flex-col pt-20 md:flex-row-reverse md:justify-between"
     >
-      <div class="flex md:mt-8">
+      <div class="flex">
         <img
           class="h-fit"
           src="images/Profile Pic 2.jpg"
@@ -72,7 +72,7 @@
         <h2 class="mt-10 font-mono text-indigo-400">Hey, my name is</h2>
         <h1 class="mt-6 mb-10 text-6xl text-white">Miriam Burton</h1>
         <div class="md:justify-start">
-          <p class="my-4 font-sans text-lg md:w-2/3">
+          <p class="my-4 font-serif text-lg md:w-2/3">
             I'm a software enginer with a knack for visual design. I live my
             life by two things: consitency and efficency. I'm good at locating
             and solving problems, keeping things orginised, and keeping a
@@ -104,30 +104,34 @@
           </a>
         </div>
         <div class="flex flex-row justify-center md:justify-start">
-          <button
-            class="group my-4 flex flex-row items-center text-center text-lg text-slate-400 hover:text-slate-300 active:text-slate-500 md:justify-start"
+          <a
+            href="https://www.youtube.com/watch?v=0uqeqnwRLZo&list=PLzOJ8-ofpbfNVWzPnJTbdlT3hSa0ruPZg&index=2"
           >
-            <div
-              class="flex-center flex h-20 w-20 items-center justify-center rounded-full border border-slate-400 group-hover:border-slate-300 group-active:border-slate-500"
+            <button
+              class="group my-4 flex flex-row items-center text-center text-lg text-slate-400 hover:text-slate-300 active:text-slate-500 md:justify-start"
             >
-              <svg
-                width="21"
-                height="22"
-                viewBox="0 0 21 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                class="flex-center flex h-20 w-20 items-center justify-center rounded-full border border-slate-400 group-hover:border-slate-300 group-active:border-slate-500"
               >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M0 2.53731C0 0.635975 2.03867 -0.569358 3.70533 0.346642L19.092 8.81064C20.8187 9.75997 20.8187 12.2413 19.092 13.1906L3.70667 21.6546C2.04 22.5706 0.00133324 21.3653 0.00133324 19.464V2.53731H0Z"
-                  fill="#94A3B8"
-                />
-              </svg>
-            </div>
+                <svg
+                  width="21"
+                  height="22"
+                  viewBox="0 0 21 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 2.53731C0 0.635975 2.03867 -0.569358 3.70533 0.346642L19.092 8.81064C20.8187 9.75997 20.8187 12.2413 19.092 13.1906L3.70667 21.6546C2.04 22.5706 0.00133324 21.3653 0.00133324 19.464V2.53731H0Z"
+                    fill="#94A3B8"
+                  />
+                </svg>
+              </div>
 
-            <span class="m-4 font-mono text-sm">Watch video</span>
-          </button>
+              <span class="m-4 font-mono text-sm">Watch video</span>
+            </button>
+          </a>
         </div>
       </div>
     </section>
@@ -135,7 +139,7 @@
     <!--about-->
     <section
       id="about"
-      class="px-4 font-sans text-slate-300 md:px-8 lg:text-left"
+      class="px-4 font-serif text-slate-300 md:px-8 lg:text-left"
     >
       <h1 class="flex items-center">
         <div class="inline-flex py-10 pr-4 font-mono text-xl text-slate-100">
@@ -172,10 +176,10 @@
             either yet, but I hope to be one day! Another thing I enjoy is
             <span class="text-indigo-400">art.</span> I bought my first tablet
             in 2021, and it's probably one of my best investments. I mainly use
-            it for static drawings, but I've also been making
+            it for static drawings, but I also make
             <span class="text-indigo-400">animations</span> and
-            <span class="text-indigo-400">pixel art</span> for some games I've
-            been working on for fun.<br /><br />
+            <span class="text-indigo-400">pixel art</span> for some games that
+            I've been working on for fun.<br /><br />
             I've been a student at Ensign College since the fall of 2021. I feel
             lucky that I started right as all the covid restrictions were
             letting up. I really enojoy all of my programming classes, but I
@@ -207,7 +211,7 @@
         >
         <span class="h-0 w-full border border-dashed border-indigo-400"></span>
       </h1>
-      <p class="mb-8 font-sans text-xl">
+      <p class="mb-8 font-serif text-xl">
         Welcome to the fun zone! Here, my top coding languages and the hours
         that I have spent in each one since January of 2023 are displayed live
         from WakaTime.
@@ -302,7 +306,7 @@
     </section>
 
     <!-- contact -->
-    <section>
+    <section id="contact">
       <div
         class="my-16 h-0 w-full border border-indigo-400 text-xl md:text-2xl"
       ></div>
