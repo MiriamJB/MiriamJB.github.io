@@ -81,7 +81,7 @@
         </div>
 
         <div class="my-10 text-center">
-          <a href="images/Resume 2023.3.pdf" download>
+          <a href="images/Resume 2023.6.pdf" download>
             <button
               class="flex w-full justify-center rounded border border-indigo-400 px-8 py-4 font-mono text-indigo-400 hover:border-indigo-300 hover:text-indigo-300 active:border-indigo-500 active:text-indigo-500 md:w-fit md:justify-start"
             >
@@ -410,16 +410,11 @@
                 "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.",
             },
             {
-              name: "JavaScript",
-              image: "images/javascript logo.png",
+              name: "C++",
+              image: "images/c++ logo.png",
               description:
-                "JavaScript has grown to become one of the most popular programming languages in the world, with a large and active developer community.",
+                "C++ is one of the world's most popular programming languages. It is an object-oriented programming language which gives a clear structure to programs.",
             },
-            // {
-            //     name: 'CSS',
-            //     image: 'images/css logo.png',
-            //     description: 'CSS is critical for creating visually appealing and consistent web designs across devices and platforms.',
-            // },
           ],
           async load() {
             const res = await fetch(
@@ -428,13 +423,7 @@
             );
             const stats = await res.json();
             const { data } = stats;
-            const languagesWanted = [
-              "HTML",
-              "CSS",
-              "JavaScript",
-              "Java",
-              "Dart",
-            ];
+            const languagesWanted = ["HTML", "C++", "Java", "Dart"];
             const langStatsList = data.languages.filter(
               (l) => languagesWanted.indexOf(l.name) !== -1
             );
